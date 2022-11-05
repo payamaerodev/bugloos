@@ -3,8 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Config;
-use App\Support\Services\MiniWallet;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class ConfigTableSeeder extends Seeder

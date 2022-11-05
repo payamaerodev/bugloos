@@ -2,33 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\Type;
-use App\Models\Collection;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
+use App\Models\Dummy;
+use App\Services\GridViewService;
+use Illuminate\Database\Eloquent\Collection;
 
 class CollectionController extends Controller
 {
+    public GridViewService $grid;
 
-    public function insert(\Illuminate\Http\Request $request)
+    public function ordered(): Collection|array
     {
-
-        try {
-            Validator::make([$request->title, $request->type], [
-                'title' => 'required|max:10',
-                'type' => 'required|in:' . implode(",",Type::$values),
-            ])->validate();
-        } catch (ValidationException $e) {
-        }
-        return Collection::create([
-            'title' => $request->title,
-            'type' => $request->type,
-        ]);
+      return  GridViewService::ordered(Dummy::class);
     }
-//    public function insert()
-//    {
-//        QueryBuilder::for(Column::class)->paginate();
-//    }
+    public function searched(): Collection|array
+    {
+      return  GridViewService::searches(Dummy::class,['integer'],29651);
+    }
 }
