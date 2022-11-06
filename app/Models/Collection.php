@@ -10,10 +10,10 @@ class Collection extends Model
 {
     use HasFactory;
 
-    protected $fillable=[
+    protected $fillable = [
         'title',
-        'type',
     ];
+    protected $relations = ['columns'];
 
     public function columns(): HasMany
     {

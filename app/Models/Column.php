@@ -4,14 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Column extends Model
 {
     use HasFactory;
 
-    public function cols(): HasMany
+    protected $fillable = [
+        'type',
+        'title',
+        'string',
+        'integer',
+        'boolean',
+
+    ];
+
+    public function collections()
     {
-        return $this->hasMany(Column::class);
+        return $this->belongsTo(Collection::class);
     }
+
 }

@@ -18,7 +18,7 @@ return new class extends Migration
         Schema::create('collections', function (Blueprint $table) {
             $table->id();
             $table->string('title')->unique();
-            $table->addColumn('colType', 'type');
+//            $table->addColumn('colType', 'type');
             $table->timestamps();
         });
     }
